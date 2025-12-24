@@ -10,11 +10,13 @@ namespace op {
 #define OP_CONVERTER(op) NamedOutputs op(const NodeContext& node)
 OP_CONVERTER(argmax);
 OP_CONVERTER(argmin);
+OP_CONVERTER(argsort);
 OP_CONVERTER(assign);
 OP_CONVERTER(assign_value);
 OP_CONVERTER(batch_norm);
 OP_CONVERTER(bicubic_interp_v2);
 OP_CONVERTER(bilinear_interp_v2);
+OP_CONVERTER(bitwise_and);
 OP_CONVERTER(box_coder);
 OP_CONVERTER(cast);
 OP_CONVERTER(ceil);
@@ -60,6 +62,7 @@ OP_CONVERTER(grid_sampler);
 OP_CONVERTER(group_norm);
 OP_CONVERTER(hard_sigmoid);
 OP_CONVERTER(hard_swish);
+OP_CONVERTER(index_put);
 OP_CONVERTER(index_select);
 OP_CONVERTER(layer_norm);
 OP_CONVERTER(leaky_relu);
@@ -154,12 +157,14 @@ OP_CONVERTER(reduce_any);
 std::map<std::string, CreatorFunction> get_supported_ops() {
     return {{"arg_max", op::argmax},
             {"arg_min", op::argmin},
+            {"argsort", op::argsort},
             {"assign", op::assign},
             {"assign_value", op::assign_value},
             {"batch_norm", op::batch_norm},
             {"bicubic_interp_v2", op::bicubic_interp_v2},
             {"bilinear_interp_v2", op::bilinear_interp_v2},
             {"bilinear_interp", op::bilinear_interp_v2},
+            {"bitwise_and", op::bitwise_and},
             {"bmm", op::matmul},
             {"box_coder", op::box_coder},
             {"cast", op::cast},
@@ -208,6 +213,7 @@ std::map<std::string, CreatorFunction> get_supported_ops() {
             {"group_norm", op::group_norm},
             {"hard_sigmoid", op::hard_sigmoid},
             {"hard_swish", op::hard_swish},
+            {"index_put", op::index_put},
             {"index_select", op::index_select},
             {"layer_norm", op::layer_norm},
             {"leaky_relu", op::leaky_relu},
